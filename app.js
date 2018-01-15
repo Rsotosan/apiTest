@@ -8,7 +8,7 @@ function init(){
     models = getModels();
     /**
     initialize = require('./initializeBD');
-    await initialize(models);
+    initialize(models);
     */
     const injectRoutes = require("./controllers");
     injectRoutes(app, models);

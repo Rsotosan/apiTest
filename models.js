@@ -11,9 +11,11 @@ module.exports = function getModels(){
         name: {type: String},
         dni: {type: String}
     }));
-    models.person.findAll = async function(){
-        return models.person.find({},function(err, users){
-            if(err){ return err}
+    models.person.findAll = async function(filter){
+        const query = {};
+        if(filter) query.name = {"$regex": filter};
+        return models.person.find(query,function(err, users){
+            if(err) return err;
             return users;
         });
     }
